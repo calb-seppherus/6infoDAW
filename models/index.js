@@ -28,7 +28,7 @@ db.lojas.belongsTo(db.usuario);
 db.lojas.hasMany(db.produtos);
 db.produtos.belongsTo(db.lojas);
 
-//Relacionamento */*
+//Relacionamento *:*
 db.produtos.belongsToMany(db.categoria, {through:"produtos_categoria"});
 db.categoria.belongsToMany(db.produtos, {through:"produtos_categoria"});
 

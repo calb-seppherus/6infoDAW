@@ -1,12 +1,12 @@
 module.exports = (sequelize, Sequelize) => {
-    const Usuario = sequelize.define("loja", {
-        nome: { type: Sequelize.string },
-        email: { type: Sequelize.string },
-        senha: { type: Sequelize.string },
+    const Usuario = sequelize.define("usuario", {
+        nome: { type: Sequelize.STRING },
+        email: { type: Sequelize.STRING },
+        senha: { type: Sequelize.STRING },
     },
 
 
-    { freezeTableName: True}
+    { freezeTableName: true}
     );
     return Usuario
 }

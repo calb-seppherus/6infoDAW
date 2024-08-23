@@ -1,12 +1,12 @@
 module.exports = (sequelize, Sequelize) => {
     const Loja = sequelize.define("loja", {
-        nome: { type: Sequelize.string},
-        endereco: { type: Sequelize.string},
-        foto: { type: Sequelize.string},
+        nome: { type: Sequelize.STRING},
+        endereco: { type: Sequelize.STRING},
+        foto: { type: Sequelize.STRING},
     },
     
 
-    { freezeTableName: True}
+    { freezeTableName: true}
     );
     return Loja
 }
