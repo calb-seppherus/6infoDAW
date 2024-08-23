@@ -20,4 +20,13 @@ db.lojas = require("./loja.model.js")(sequelize, Sequelize);
 db.usuario = require("./usuario.model.js")(sequelize, Sequelize);
 db.categoria = require("./categoria.model.js")(sequelize, Sequelize);
 
+db.usuario.hasOne(db.lojas);
+db.lojas.belongsTo(db.usuario);
+
+db.lojas.hasMany(db.produtos);
+db.produtos.belongsTo(db.lojas);
+
+db.produtos.belongsToMany(db.categoria, {through:"produtos_categoria"});
+db.categoria.belongsToMany(db.produtos, {through:"produtos_categoria"});
+
 module.exports = db;
