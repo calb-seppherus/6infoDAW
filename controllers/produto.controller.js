@@ -52,7 +52,8 @@ exports.findAll = (req, res) => {
 exports.findOne = (req, res) => {
         const id = req.params.id;
 
-    Produto.findByPk(id)
+    //include: db.lojas
+    Produto.findByPk(id, {include: ["loja"]})
     .then((data) => {
         if (data) {
             res.send(data);
