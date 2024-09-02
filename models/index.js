@@ -17,19 +17,19 @@ db.sequelize = sequelize;
 
 db.produtos = require("./produto.model.js")(sequelize, Sequelize);
 db.lojas = require("./loja.model.js")(sequelize, Sequelize);
-db.usuario = require("./usuario.model.js")(sequelize, Sequelize);
-db.categoria = require("./categoria.model.js")(sequelize, Sequelize);
+db.usuarios = require("./usuario.model.js")(sequelize, Sequelize);
+db.categorias = require("./categoria.model.js")(sequelize, Sequelize);
 
 //Relacionamento 1:1
-db.usuario.hasOne(db.lojas);
-db.lojas.belongsTo(db.usuario);
+db.usuarios.hasOne(db.lojas);
+db.lojas.belongsTo(db.usuarios);
 
 //Relacionamento 1:*
 db.lojas.hasMany(db.produtos);
 db.produtos.belongsTo(db.lojas);
 
 //Relacionamento *:*
-db.produtos.belongsToMany(db.categoria, {through:"produtos_categoria"});
-db.categoria.belongsToMany(db.produtos, {through:"produtos_categoria"});
+db.produtos.belongsToMany(db.categorias, {through:"produtos_categoria"});
+db.categorias.belongsToMany(db.produtos, {through:"produtos_categoria"});
 
 module.exports = db;
