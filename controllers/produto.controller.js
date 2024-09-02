@@ -21,7 +21,7 @@ exports.create = (req, res) => {
     };
 
 
-    produto.create(produto)
+    Produto.create(produto)
         .then((data) => {
             res.send(data);
         })
