@@ -28,6 +28,7 @@ db.sequelize
   })
 
 require("./routes/produto.routes") (app);
+require("./routes/loja.routes") (app);
 
 app.listen(8000, function (req, res) {
     console.log("app rodando na porta 8000");
