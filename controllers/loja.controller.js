@@ -86,5 +86,4 @@ exports.deleteAll = (req, res) => {
     .catch((err) => {
         res.status(500).send({ message: err.message || "erro a deletar todas as lojas "});
     });
-
 };
