@@ -29,7 +29,7 @@ db.lojas.hasMany(db.produtos);
 db.produtos.belongsTo(db.lojas);
 
 //Relacionamento *:*
-db.produtos.belongsToMany(db.categorias, {through:"produtos_categoria"});
-db.categorias.belongsToMany(db.produtos, {through:"produtos_categoria"});
+db.produtos.belongsToMany(db.categorias, {through:"produtos_categorias"});
+db.categorias.belongsToMany(db.produtos, {through:"produtos_categorias"});
 
 module.exports = db;
