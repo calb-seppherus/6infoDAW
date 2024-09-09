@@ -83,7 +83,7 @@ exports.deleteAll = (req, res) => {
         truncate: false,
     })
     .then((num) => {
-        res.send({ message: `${num} usuarios foram removidas`});
+        res.send({ message: `${num} usuarios foram removidos`});
     })
     .catch((err) => {
         res.status(500).send({ message: err.message || "erro a deletar todas as usuarios "});
