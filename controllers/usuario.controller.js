@@ -6,7 +6,7 @@ exports.create = (req, res) => {
     const usuario = {
         nome: req.body.nome,
         email: req.body.email,
-        senha: req.body.senha
+        senha: bcrypt.hashSync(req.body.senha, 10),
     };
 
     Usuario.create(usuario)
@@ -59,6 +59,35 @@ exports.update = (req, res) => {
     .catch((err) => {
         res.status(500).send({ message: err.message || "erro ao atualizar" });
     });
+};
+
+exports.login = (req, res) => {
+    Usuario.findOne({
+        where: {
+            email: req.body.email,
+        },
+    })
+    .then((usuario) => {
+        if (!usuario) {
+            return res.status(404).send({ message: "Usuario não encontrado" });
+        }
+
+        var passwordIsValid = bcrypt.compareSync (
+            req.body.password,
+            usuario.password
+        );
+
+        if (!passwordIsValid) {
+            return res.status(401).send({
+                accessToken: null, message: "senha invalida!",
+            });
+        }
+        var token = jwt.sign({ id: usuario.id }, secretKey, {
+            expiresIn: "1h"
+        });
+        res.status(200).send({ usuario: usuario, accessToken: token });
+    })
+    .catch((err) => res.status(500).send({ message: err.message }))
 };
 
 exports.delete = (req, res) => {

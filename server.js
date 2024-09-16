@@ -2,6 +2,9 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const db = require("./models");
+var jwt = require("jsonwebtoken");
+var bcrypt = require("bcrypt");
+const secretKey = 'daw_ii_secret_key';
 
 const app = express();
 
